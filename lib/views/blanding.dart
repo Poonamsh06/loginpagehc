@@ -213,6 +213,28 @@ class LandingPage extends StatelessWidget {
                                                         .isMediumScreen(context)
                                                     ? 20
                                                     : 40),
+                                            child: Text(
+                                              "We Provide Serives Like...",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: ResponsiveWidget
+                                                        .isMediumScreen(context)
+                                                    ? 18
+                                                    : 22,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: ResponsiveWidget
+                                                        .isMediumScreen(context)
+                                                    ? 40
+                                                    : 55.0,
+                                                right: ResponsiveWidget
+                                                        .isMediumScreen(context)
+                                                    ? 20
+                                                    : 40),
                                             child: SizedBox(
                                               height: 57,
                                               child: CarouselSlider(
@@ -245,28 +267,7 @@ class LandingPage extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: ResponsiveWidget
-                                                        .isMediumScreen(context)
-                                                    ? 40
-                                                    : 55.0,
-                                                right: ResponsiveWidget
-                                                        .isMediumScreen(context)
-                                                    ? 20
-                                                    : 40),
-                                            child: Text(
-                                              "We Care You, We Serve You",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: ResponsiveWidget
-                                                        .isMediumScreen(context)
-                                                    ? 18
-                                                    : 22,
-                                                color: Colors.black54,
-                                              ),
-                                            ),
-                                          ),
+
                                           SizedBox(
                                             height:
                                                 ResponsiveWidget.isMediumScreen(
@@ -434,7 +435,7 @@ class LandingPage extends StatelessWidget {
                               ? MediaQuery.of(context).size.height * 0.5
                               : MediaQuery.of(context).size.height * 0.66,
                           child: Image.asset(
-                            "assets/c78de67c6d0c83cf380fccdb0a2b167e.jpg",
+                            "assets/blandingBanner.png",
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -451,54 +452,67 @@ class LandingPage extends StatelessWidget {
                     child: Column(children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            children: [
-                              Image.asset(
-                                "assets/Group 7.png",
-                                height: ResponsiveWidget.isMediumScreen(context)
-                                    ? 120
-                                    : 156,
-                              ),
-                              SizedBox(
-                                height: ResponsiveWidget.isMediumScreen(context)
-                                    ? MediaQuery.of(context).size.height * 0.03
-                                    : MediaQuery.of(context).size.height * 0.05,
-                              ),
-                              Center(
-                                child: SelectableText1(
-                                  data: "NOW BOOK DOCTOR ONLINE",
-                                  max: ResponsiveWidget.isMediumScreen(context)
-                                      ? 11
-                                      : 14,
-                                  clr: Colors.black,
-                                  weight: FontWeight.bold,
+                          Expanded(
+                            flex: 1,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/48.png",
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? 120
+                                          : 156,
                                 ),
-                              ),
-                              SizedBox(
-                                height: ResponsiveWidget.isMediumScreen(context)
-                                    ? MediaQuery.of(context).size.height * 0.01
-                                    : MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              Center(
-                                child: SelectableText1(
-                                  data: "BOOK APPOINMENT FOR YOURSELF ",
-                                  max: ResponsiveWidget.isMediumScreen(context)
-                                      ? 11
-                                      : 14,
-                                  clr: Colors.black,
-                                  weight: FontWeight.bold,
+                                SizedBox(
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? MediaQuery.of(context).size.height *
+                                              0.03
+                                          : MediaQuery.of(context).size.height *
+                                              0.05,
                                 ),
-                              ),
-                            ],
+                                Center(
+                                  child: SelectableText1(
+                                    data: "NOW BOOK DOCTOR ONLINE",
+                                    max:
+                                        ResponsiveWidget.isMediumScreen(context)
+                                            ? 9
+                                            : 14,
+                                    clr: Colors.black,
+                                    weight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? MediaQuery.of(context).size.height *
+                                              0.01
+                                          : MediaQuery.of(context).size.height *
+                                              0.02,
+                                ),
+                                Center(
+                                  child: SelectableText1(
+                                    data:
+                                        "BOOK APPOINTMENT FROM VERIFIED DOCTORS",
+                                    max:
+                                        ResponsiveWidget.isMediumScreen(context)
+                                            ? 9
+                                            : 14,
+                                    clr: Colors.black,
+                                    weight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Expanded(
                               flex: 1,
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    "assets/Group 7.png",
+                                    "assets/49.png",
                                     height:
                                         ResponsiveWidget.isMediumScreen(context)
                                             ? 120
@@ -514,10 +528,10 @@ class LandingPage extends StatelessWidget {
                                   ),
                                   Center(
                                     child: SelectableText1(
-                                      data: "GET DOCTOR NEARBY YOU ",
+                                      data: "GET LAB TESTING AT YOUR PLACE ",
                                       max: ResponsiveWidget.isMediumScreen(
                                               context)
-                                          ? 11
+                                          ? 9
                                           : 14,
                                       clr: Colors.black,
                                       weight: FontWeight.bold,
@@ -534,10 +548,10 @@ class LandingPage extends StatelessWidget {
                                   Center(
                                     child: SelectableText1(
                                       data:
-                                          "TRACK YOUR SURROUNDING DOCTOR WITH OUR LATEST ETA SYSTEM",
+                                          "BOOK LAB TESTER NEAR YOU FOR LAB TESTING",
                                       max: ResponsiveWidget.isMediumScreen(
                                               context)
-                                          ? 11
+                                          ? 9
                                           : 14,
                                       clr: Colors.black,
                                       weight: FontWeight.bold,
@@ -546,11 +560,64 @@ class LandingPage extends StatelessWidget {
                                 ],
                               )),
                           Expanded(
+                            flex: 1,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/gym.png",
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? 120
+                                          : 156,
+                                ),
+                                SizedBox(
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? MediaQuery.of(context).size.height *
+                                              0.03
+                                          : MediaQuery.of(context).size.height *
+                                              0.05,
+                                ),
+                                Center(
+                                  child: SelectableText1(
+                                    data: "GET ALL EXCERCISE VIDEOS",
+                                    max:
+                                        ResponsiveWidget.isMediumScreen(context)
+                                            ? 9
+                                            : 14,
+                                    clr: Colors.black,
+                                    weight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? MediaQuery.of(context).size.height *
+                                              0.01
+                                          : MediaQuery.of(context).size.height *
+                                              0.02,
+                                ),
+                                Center(
+                                  child: SelectableText1(
+                                    data:
+                                        "LOOK OUT ANYTHING FOR THE PHYSICAL HEALTH",
+                                    max:
+                                        ResponsiveWidget.isMediumScreen(context)
+                                            ? 9
+                                            : 14,
+                                    clr: Colors.black,
+                                    weight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
                               flex: 1,
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    "assets/Group 7.png",
+                                    "assets/47.png",
                                     height:
                                         ResponsiveWidget.isMediumScreen(context)
                                             ? 120
@@ -566,10 +633,10 @@ class LandingPage extends StatelessWidget {
                                   ),
                                   Center(
                                     child: SelectableText1(
-                                      data: "FAST DELIVERY",
+                                      data: "MEDICINE AND OTHER PRODUCTS",
                                       max: ResponsiveWidget.isMediumScreen(
                                               context)
-                                          ? 11
+                                          ? 9
                                           : 14,
                                       clr: Colors.black,
                                       weight: FontWeight.bold,
@@ -586,10 +653,10 @@ class LandingPage extends StatelessWidget {
                                   Center(
                                     child: SelectableText1(
                                       data:
-                                          "GET MEDICINES AND PRODUCTS WITH THE LIGHTNING FAST DELIVERY",
+                                          "GET ITEMS WITH THE LIGHTNING FAST DELIVERY",
                                       max: ResponsiveWidget.isMediumScreen(
                                               context)
-                                          ? 11
+                                          ? 9
                                           : 14,
                                       clr: Colors.black,
                                       weight: FontWeight.bold,

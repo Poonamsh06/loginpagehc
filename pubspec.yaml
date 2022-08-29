@@ -108,6 +108,11 @@ flutter:
      - assets/c78de67c6d0c83cf380fccdb0a2b167e.jpg
      - assets/cartoon-male-doctor-holding-clipboard_29190-4660.webp
      - assets/Group 7.png
+     - assets/blandingBanner.png
+     - assets/47.png
+     - assets/48.png
+     - assets/49.png
+     - assets/gym.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
