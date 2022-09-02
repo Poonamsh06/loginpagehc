@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthcare_web/utils/constants.dart';
+import 'package:healthcare_web/widgets/bottom_bar.dart';
 
-import '../Responsive.dart';
-import '../widgets/text.dart';
+import '../../Responsive.dart';
+import '../../widgets/text.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -144,7 +146,9 @@ class LandingPage extends StatelessWidget {
                                           ),
                                           InkWell(
                                             hoverColor: Colors.white,
-                                            onTap: () {},
+                                            onTap: () {
+                                              Get.toNamed("/home");
+                                            },
                                             child: Container(
                                               margin: EdgeInsets.only(
                                                   top: ResponsiveWidget
@@ -296,10 +300,17 @@ class LandingPage extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.15,
+                                                  height: ResponsiveWidget
+                                                          .isMediumScreen(
+                                                              context)
+                                                      ? MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.17
+                                                      : MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.15,
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
@@ -432,7 +443,7 @@ class LandingPage extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.height * 0.37,
                           height: ResponsiveWidget.isMediumScreen(context)
-                              ? MediaQuery.of(context).size.height * 0.5
+                              ? MediaQuery.of(context).size.height * 0.56
                               : MediaQuery.of(context).size.height * 0.66,
                           child: Image.asset(
                             "assets/blandingBanner.png",
@@ -672,48 +683,79 @@ class LandingPage extends StatelessWidget {
                     ]),
                   ),
                   Container(
-                      height: 200,
+                      //height: 200,
                       color: Color(0xfffcfcfc),
                       padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.1,
                       ),
                       child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
-                                flex: 1,
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SelectableText(
-                                          "Health Services\nin your pocket",
+                                flex: 2,
+                                child: Center(
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SelectableText(
+                                            "Health Services\nin your pocket",
+                                            style: GoogleFonts.openSans(
+                                                fontSize: 34,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold)),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        SelectableText(
+                                          "Get Appointment from your required HealthCare Professional\n& other services on the go, with the all-new HealthCare app.",
                                           style: GoogleFonts.aBeeZee(
-                                              fontSize: ResponsiveWidget
-                                                      .isMediumScreen(context)
-                                                  ? 24
-                                                  : 34,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold)),
-                                      const SizedBox(
-                                        height: 10,
+                                              fontSize: 14,
+                                              color: Colors.black54,
+                                              letterSpacing: 1.5,
+                                              wordSpacing: 2.0),
+                                          textAlign: TextAlign.justify,
+                                        ),
+                                      ]),
+                                )),
+                            Expanded(
+                                flex: 2,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: Image.network(
+                                        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_768,h_978/pixel_wbdy4n",
+                                        height: Get.height * 0.4,
+                                        width: Get.width * 0.2,
                                       ),
-                                      SelectableText(
-                                        "Get Appointment from your required HealthCare Professional\n& other services on the go, with the all-new HealthCare app.",
-                                        style: GoogleFonts.aBeeZee(
-                                            fontSize:
-                                                ResponsiveWidget.isMediumScreen(
-                                                        context)
-                                                    ? 10
-                                                    : 14,
-                                            color: Colors.black54,
-                                            letterSpacing: 1.5,
-                                            wordSpacing: 2.0),
-                                        textAlign: TextAlign.justify,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.only(top: 20),
+                                      child: Image.network(
+                                        "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_768,h_978/iPhone_wgconp_j0d1fn",
+                                        height: Get.height * 0.4,
+                                        width: Get.width * 0.2,
                                       ),
-                                    ])),
-                          ]))
+                                    )
+                                  ],
+                                ))
+                          ])),
+                  ResponsiveWidget.isSmallScreen(context)
+                      ? SizedBox()
+                      : Container(
+                          width: Get.width,
+                          padding: EdgeInsets.only(
+                              left: Get.width * 0.1, right: Get.width * 0.1),
+                          //color: Color(0xfff8f8f8),
+                          color: Colors.green.shade50,
+                          child: NewBottomBar())
                 ])));
   }
 

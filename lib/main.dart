@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare_web/views/blanding.dart';
+import 'package:get/get.dart';
+import 'package:healthcare_web/utils/theme.dart';
+import 'package:healthcare_web/views/home.dart';
+import 'package:healthcare_web/views/landing_page/blanding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LandingPage(),
+      theme: Themes.light,
+      initialRoute: '/start',
+      getPages: [
+        GetPage(name: '/start', page: () => const LandingPage()),
+        GetPage(name: '/home', page: () => const HomePage()),
+      ],
     );
   }
 }
