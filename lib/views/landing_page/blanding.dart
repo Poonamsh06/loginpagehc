@@ -754,7 +754,7 @@ class LandingPage extends StatelessWidget {
                           padding: EdgeInsets.only(
                               left: Get.width * 0.1, right: Get.width * 0.1),
                           //color: Color(0xfff8f8f8),
-                          color: Colors.green.shade50,
+                          color: const Color(themeColor2),
                           child: NewBottomBar())
                 ])));
   }

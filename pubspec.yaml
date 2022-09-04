@@ -105,7 +105,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/logo1.png
      - assets/c78de67c6d0c83cf380fccdb0a2b167e.jpg
      - assets/cartoon-male-doctor-holding-clipboard_29190-4660.webp
      - assets/Group 7.png
@@ -113,7 +112,67 @@ flutter:
      - assets/47.png
      - assets/48.png
      - assets/49.png
+     - assets/apple.png
+     - assets/gmail.png
+     - assets/google.png
+     - assets/doctor.png
+     - assets/logo1.png
+     - assets/social.png
+     - assets/Hospital.png
+     - assets/doctor2.png
+     - assets/ambulance.png
      - assets/gym.png
+     - assets/lab.png
+     - assets/medicine.png
+     - assets/dite.png
+     - assets/supplement.png
+     - assets/ambulanceImage.png
+     - assets/doctorImage.png
+     - assets/medicineImage.png
+     - assets/banner.png
+     - assets/user.png
+     - assets/chat_background.png
+     - assets/booking.png
+     - assets/rejected.png
+     - assets/requestng.png
+     - assets/accept.png
+     - assets/not.png
+     - assets/fit_body.png
+     - assets/medicine_delivery.png
+     - assets/suppl.png
+     - assets/gym_trainner.png
+     - assets/crunch.png
+     - assets/line.png
+     - assets/pushup.png
+     - assets/workout1.png
+     - assets/workout2.png
+     - assets/workout3.png
+     - assets/yoga.png
+     - assets/hand_e.png
+     - assets/cardio_e.png
+     - assets/lab_tester.png
+     - assets/healtcare_labs.png
+     - assets/skin_care.png
+     - assets/hair.png
+     - assets/ayurvedic_logo.png
+     - assets/no_chat.png
+     - assets/no_medicine.png
+     - assets/no_search.png
+     - assets/medicine_not_found.png
+     - assets/not_found.png
+     - assets/no_doctor_image.png
+     - assets/no_hospital_and_clinic_image.png
+     - assets/clinic.png
+     - assets/chat.png
+     - assets/chat_bg.png
+     - assets/support_bg.png
+     - assets/support_logo.png
+     - assets/log_in_doctor.png
+     - assets/slider1.png
+     - assets/slider2.png
+     - assets/slider3.png
+     - assets/slider4.png
+     - assets/no_user.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -511,8 +511,8 @@ class HomePage extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         color: Color(themeColor2),
                                         image: DecorationImage(
-                                            image:
-                                                AssetImage("assets/49.png"))),
+                                            image: AssetImage(
+                                                "assets/no_doctor_image.png"))),
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -526,7 +526,7 @@ class HomePage extends StatelessWidget {
                                           weigth: false,
                                           size: 14,
                                           text:
-                                              "  From Sedans and SUVs to Luxury cars for special occasions",
+                                              "  You will get security form the google for consultation",
                                           color: Colors.black54)
                                     ],
                                   )
@@ -543,22 +543,22 @@ class HomePage extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         color: Color(themeColor2),
                                         image: DecorationImage(
-                                            image:
-                                                AssetImage("assets/49.png"))),
+                                            image: AssetImage(
+                                                "assets/no_doctor_image.png"))),
                                   ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text1(
-                                          text: "Book doctors near You",
+                                          text: "Inter-Connective Technology",
                                           color: Colors.black87,
                                           size: 18),
                                       Text3(
                                           weigth: false,
                                           size: 14,
                                           text:
-                                              "  From Sedans and SUVs to Luxury cars for special occasions",
+                                              "  All the services are inter-connective which make it most effective",
                                           color: Colors.black54)
                                     ],
                                   )
@@ -591,14 +591,15 @@ class HomePage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text1(
-                                          text: "Book doctors near You",
+                                          text:
+                                              "Effective Service For Physical Health",
                                           color: Colors.black87,
                                           size: 18),
                                       Text3(
                                           weigth: false,
                                           size: 14,
                                           text:
-                                              "  From Sedans and SUVs to Luxury cars for special occasions",
+                                              "  You will get easy access for all the gym and yoga video",
                                           color: Colors.black54)
                                     ],
                                   )
@@ -655,7 +656,7 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: Get.width * 0.1, right: Get.width * 0.1),
                     //color: Color(0xfff8f8f8),
-                    color: Colors.green.shade50,
+                    color: const Color(themeColor2),
                     child: NewBottomBar())
           ]),
         ));
