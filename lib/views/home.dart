@@ -9,7 +9,24 @@ import 'package:healthcare_web/widgets/top_tabs.dart';
 import '../Responsive.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  List<String> servicesList = [
+    "Medicines",
+    "Lab Testing",
+    "Gym",
+    "Ayurvedic",
+    "Skin Care",
+    "Hair Care",
+  ];
+  //banner
+  List<dynamic> servicesImages = [
+    "assets/medicine.png",
+    "assets/lab.png",
+    "assets/gym.png",
+    "assets/ayurvedic_logo.png",
+    "assets/skin_care.png",
+    "assets/hair.png",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -189,8 +206,34 @@ class HomePage extends StatelessWidget {
                         width: 150,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://upload.wikimedia.org/wikipedia/commons/1/19/Cosmetologist_applying_skincare_treatment.jpg"),
+                                image: AssetImage("assets/banner1.png"),
+                                fit: BoxFit.contain)),
+                      )),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      height: 250,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage("assets/banner2.png"),
+                      )),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        height: 250,
+                        width: 150,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/banner3.png"),
                                 fit: BoxFit.contain)),
                       )),
                   SizedBox(
@@ -203,36 +246,7 @@ class HomePage extends StatelessWidget {
                         width: 150,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"),
-                                fit: BoxFit.contain)),
-                      )),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: 250,
-                        width: 150,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/s5ug2key6e2sptaxku5v"),
-                                fit: BoxFit.contain)),
-                      )),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: 250,
-                        width: 150,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX15482231.jpg"),
+                                image: AssetImage("assets/banner4.png"),
                                 fit: BoxFit.contain)),
                       )),
                 ],
@@ -281,8 +295,9 @@ class HomePage extends StatelessWidget {
                                                 topRight: Radius.circular(20)),
                                             color: Colors.white,
                                             image: DecorationImage(
-                                                image: NetworkImage(
-                                                    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"),
+                                                image: AssetImage(
+                                                  " assets/doctor2.png  ",
+                                                ),
                                                 fit: BoxFit.cover)),
                                       ),
                                       SizedBox(
@@ -291,7 +306,7 @@ class HomePage extends StatelessWidget {
                                         //   color: Colors.white,
                                         // ),
                                         child: Text1(
-                                          text: "Demo",
+                                          text: "Doctor",
                                           size: 15,
                                           color: Colors.black,
                                         ),
@@ -334,8 +349,9 @@ class HomePage extends StatelessWidget {
                                                 topRight: Radius.circular(20)),
                                             color: Colors.white,
                                             image: DecorationImage(
-                                                image: NetworkImage(
-                                                    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"),
+                                                image: AssetImage(
+                                                  " assets/Hospital.png  ",
+                                                ),
                                                 fit: BoxFit.cover)),
                                       ),
                                       SizedBox(
@@ -344,7 +360,7 @@ class HomePage extends StatelessWidget {
                                         //   color: Colors.white,
                                         // ),
                                         child: Text1(
-                                          text: "Demo",
+                                          text: "Hospital",
                                           size: 15,
                                           color: Colors.black,
                                         ),
@@ -387,8 +403,9 @@ class HomePage extends StatelessWidget {
                                                 topRight: Radius.circular(20)),
                                             color: Colors.white,
                                             image: DecorationImage(
-                                                image: NetworkImage(
-                                                    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"),
+                                                image: AssetImage(
+                                                  " assets/clinic.png  ",
+                                                ),
                                                 fit: BoxFit.cover)),
                                       ),
                                       SizedBox(
@@ -397,7 +414,7 @@ class HomePage extends StatelessWidget {
                                         //   color: Colors.white,
                                         // ),
                                         child: Text1(
-                                          text: "Demo",
+                                          text: "Clinic",
                                           size: 15,
                                           color: Colors.black,
                                         ),
@@ -450,22 +467,20 @@ class HomePage extends StatelessWidget {
                                     : 160,
                                 width: 400,
                                 decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep"),
-                                        fit: BoxFit.cover)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20)),
+                                  color: Colors.white,
+                                ),
+                                child: Image.asset(servicesImages[index]),
                               ),
                               SizedBox(
-                                height: 50,
+                                height: 35,
                                 // decoration: const BoxDecoration(
                                 //   color: Colors.white,
                                 // ),
                                 child: Text1(
-                                  text: "Demo",
+                                  text: servicesList[index],
                                   size: 15,
                                   color: Colors.black,
                                 ),

@@ -173,7 +173,12 @@ flutter:
      - assets/slider3.png
      - assets/slider4.png
      - assets/no_user.png
-
+     - assets/banner1.png
+     - assets/banner2.png
+     - assets/banner3.png
+     - assets/banner4.png
+     - assets/landing.png
+     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -27,7 +27,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
 
   <title>healthcare_web</title>
   <link rel="manifest" href="manifest.json">
@@ -54,5 +54,27 @@
       });
     });
   </script>
+  <script>
+  import { initializeApp } from "firebase/app";
+  import { getAnalytics } from "firebase/analytics";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyvyasaMdEL8ke4_woTcLazEHOUaNtI5w",
+    authDomain: "healthcare-2c808.firebaseapp.com",
+    projectId: "healthcare-2c808",
+    storageBucket: "healthcare-2c808.appspot.com",
+    messagingSenderId: "5028793711",
+    appId: "1:5028793711:web:6f4b02bd796b405a81ec9a",
+    measurementId: "G-VQE4XGN6G6"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>

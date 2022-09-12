@@ -1,18 +1,57 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthcare_web/controller/login_controller.dart';
 import 'package:healthcare_web/utils/constants.dart';
+import 'package:healthcare_web/views/home.dart';
 import 'package:healthcare_web/widgets/bottom_bar.dart';
-
 import '../../Responsive.dart';
+import '../../controller/auth_controller.dart';
 import '../../widgets/text.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
   @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  //final _formkey = GlobalKey<FormState>();
+
+  //final TextEditingController phoneNumber = TextEditingController();
+  final uuid = AuthController.authInstance.firebaseUser.value?.uid;
+  bool isSecurePassword = true;
+  LogInController logInController = Get.put(LogInController());
+  @override
   Widget build(BuildContext context) {
+       String? validatorEmail(String value) {
+      if (value.isEmpty && !(value.contains("@"))) {
+        return "Enter a valid Email";
+      }
+      return null;
+    }
+
+    String? validatePassword(String value) {
+      //Added the regular expression which contains all the possible values for the condition of password
+      if ((value.length < 8)) {
+        return 'Please enter password of 8 character';
+      }
+      if (value.isEmpty) {
+        return 'Please enter password';
+      }
+      if ((!value.contains(RegExp(r"[a-z]"))) ||
+          (!value.contains(RegExp(r"[A-Z]"))) ||
+          (!value.contains(RegExp(r"[0-9]"))) ||
+          (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))) {
+        return "Please enter a valid password";
+      }
+      return null;
+    }
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
@@ -101,7 +140,246 @@ class LandingPage extends StatelessWidget {
                                           Spacer(),
                                           InkWell(
                                             hoverColor: Colors.white,
-                                            onTap: () {},
+                                            onTap: () {
+                                              Get.defaultDialog(
+                                                  title: "Login",
+                                                  backgroundColor:
+                                                      Color(themeColor2),
+                                                  content: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                          right: 10,
+                                                          left: 10,
+                                                        ),
+                                                        child: SizedBox(
+                                                          width:MediaQuery.of(context).size.width*0.21  ,
+                                                          child: TextFormField(
+                                                             keyboardType: TextInputType.emailAddress,
+                                                              key: const ValueKey("Email"),
+                  controller: emailController,
+                                                            cursorColor: Color(
+                                                                themeColor),
+                                                            decoration: InputDecoration(
+                                                                prefixIcon: Icon(
+                                                                  Icons
+                                                                      .text_fields,
+                                                                  color: Color(
+                                                                      themeColor),
+                                                                ),
+                                                                hintStyle: GoogleFonts.aBeeZee(color: Colors.black54, fontSize: 15),
+                                                                hintText: "Email",
+                                                                // labelText: "Name",
+                                                                 
+
+                                                                focusColor: Color(themeColor),
+                                                                // labelStyle: TextStyle(color: Colors.black),
+
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid)),
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid)),
+                                                                border: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid))),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                          right: 10,
+                                                          left: 10,
+                                                        ),
+                                                        child: SizedBox(
+                                                        
+
+                                                            width:MediaQuery.of(context).size.width*0.21  ,
+
+                                                          child: TextFormField(
+                                                             key: const ValueKey("Password"),
+                  controller: passwordController,
+                                                            cursorColor: Color(
+                                                                themeColor),
+                                                            decoration: InputDecoration(
+                                                                prefixIcon: Icon(
+                                                                  Icons
+                                                                      .password,
+                                                                  color: Color(
+                                                                      themeColor),
+                                                                ),
+                                                                hintStyle: GoogleFonts.aBeeZee(color: Colors.black54, fontSize: 15),
+                                                                hintText: "Password",
+                                                                // labelText: "Name",
+
+                                                                focusColor: Color(themeColor),
+                                                                suffixIcon: IconButton(
+                                                                    icon: const Icon(Icons.remove_red_eye,color: Color(themeColor),),
+                                                                    onPressed: () {
+                                                                      bool canSee=!logInController.see.value;
+                                                                      logInController.change(canSee);
+                                                                      print("eye");
+                                                                      setState(() {
+                                                                        isSecurePassword = !isSecurePassword;
+                                                                      });
+                                                                    }),
+
+                                                                // labelStyle: TextStyle(color: Colors.black),
+
+                                                                focusedBorder: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid)),
+                                                                enabledBorder: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid)),
+                                                                border: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.all(
+                                                                      Radius.circular(
+                                                                          10.0),
+                                                                    ),
+                                                                    borderSide: BorderSide(color: Color(themeColor), style: BorderStyle.solid))),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          GestureDetector(
+                                                            onTap: () {},
+                                                            child: Text1(
+                                                                text:
+                                                                    "Forget Password",
+                                                                color: const Color(
+                                                                    themeColor),
+                                                                size: 16),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: GestureDetector(
+                                                          onTap: () async {
+                                                             Get.bottomSheet(
+                                                            Obx(() =>
+                                                                AuthController.authInstance.isLoading.value == false
+                                                                    ? Container(
+                                                                        child: Text(""),
+                                                                      )
+                                                                    : const Center(
+                                                                        child: CircularProgressIndicator(
+                                                                        color: Colors.white,
+                                                                      ))),
+                                                            );
+                                                            AuthController.authInstance.login(
+                                                              emailController.text.trim(),
+                                                              passwordController.text.trim(),
+                                                            );
+                                                            await FirebaseFirestore.instance
+                                                                .collection("users")
+                                                                .doc("HCID${uuid}")
+                                                                .update({
+                                                              "token": await FirebaseMessaging.instance.getToken(),
+                                                            });
+                                                            Get.to(HomePage());
+                                                          },
+                                                          child: Container(
+                                                            //width: double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: const Color(
+                                                                  0xFF0C9869),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .all(
+                                                                      12.0),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "    Log In    ",
+                                                                  style: Theme.of(
+                                                                          context)
+                                                                      .textTheme
+                                                                      .headline4!
+                                                                      .copyWith(
+                                                                          fontSize: MediaQuery.of(context).size.height < 800
+                                                                              ? 15
+                                                                              : 20,
+                                                                          fontWeight: FontWeight
+                                                                              .bold,
+                                                                          color: Colors
+                                                                              .white,
+                                                                          letterSpacing:
+                                                                              1),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          const Text(
+                                                            "Don't have an Account?",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          ClickableText(
+                                                            text: "Sign Up",
+                                                            size: 15,
+                                                            pageName:
+                                                                "/newAccount",
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ));
+                                            },
                                             child: Container(
                                               margin: EdgeInsets.only(
                                                   top: ResponsiveWidget
@@ -361,25 +639,27 @@ class LandingPage extends StatelessWidget {
                                                                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero), borderSide: BorderSide(color: Color(0xffffbd59), style: BorderStyle.solid))),
                                                       ),
                                                       const SizedBox(
-                                                        height: 10,
+                                                        height: 8,
                                                       ),
                                                       textMethod(
                                                           "Get The Services In Your Location"),
                                                       const SizedBox(
-                                                        height: 10,
+                                                        height: 5,
                                                       ),
-                                                      Row(
-                                                        children: [
-                                                          textMethod1(
-                                                              "Malout  "),
-                                                          textMethod2(
-                                                              "Bhatinda  "),
-                                                          textMethod1(
-                                                              "Dabwali  "),
-                                                          textMethod2("&  "),
-                                                          textMethod1(
-                                                              "more..."),
-                                                        ],
+                                                      Expanded(
+                                                        child: Row(
+                                                          children: [
+                                                            textMethod1(
+                                                                "Malout  "),
+                                                            textMethod2(
+                                                                "Bhatinda  "),
+                                                            textMethod1(
+                                                                "Dabwali  "),
+                                                            textMethod2("&  "),
+                                                            textMethod1(
+                                                                "more..."),
+                                                          ],
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -446,8 +726,8 @@ class LandingPage extends StatelessWidget {
                               ? MediaQuery.of(context).size.height * 0.56
                               : MediaQuery.of(context).size.height * 0.66,
                           child: Image.asset(
-                            "assets/blandingBanner.png",
-                            fit: BoxFit.cover,
+                            "assets/landing.png",
+                            fit: BoxFit.contain,
                           )),
                     ),
                   ]),
@@ -760,9 +1040,6 @@ class LandingPage extends StatelessWidget {
   }
 
   // SelectableText selectableTabText(text) {
-  //   return selectableTabText();
-  // }
-
   Text textMethod1(text) {
     return Text(
       text,
